@@ -16,14 +16,14 @@ class SampleCreated implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $data;
+    public $message;
     /**
      * Create a new event instance.
      */
     public function __construct(Sample $sample)
     {
         Log::info('event created');
-        $this->data =  $sample;
+        $this->message =  $sample;
     }
     public function broadcastAs()
     {
@@ -37,10 +37,10 @@ class SampleCreated implements ShouldBroadcast
     public function broadcastOn(): array
     {
         Log::info('event dispached');
-        Log::info($this->data->metadata['opsCentralId']);
+        Log::info($this->message->metadata['opsCentralId']);
 
         return [
-            new Channel('live-sample.' . $this->data->metadata['opsCentralId']),
+            new Channel('live-sample.' . $this->message->metadata['opsCentralId']),
         ];
     }
 }
