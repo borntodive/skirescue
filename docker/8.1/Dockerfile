@@ -48,6 +48,10 @@ RUN apt-get update \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN pecl install mongodb
+
+RUN echo "extension=mongodb.so" > /etc/php/8.1/cli/php.ini
+
 RUN setcap "cap_net_bind_service=+ep" /usr/bin/php8.1
 
 RUN groupadd --force -g $WWWGROUP sail
