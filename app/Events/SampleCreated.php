@@ -37,6 +37,7 @@ class SampleCreated implements ShouldBroadcast
     public function broadcastOn(): array
     {
         Log::info('event dispached');
+        Log::info($this->data->metadata['opsCentralId']);
 
         return [
             new Channel('live-sample.' . $this->data->metadata['opsCentralId']),
