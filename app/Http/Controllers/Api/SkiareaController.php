@@ -44,7 +44,7 @@ class SkiareaController extends Controller
      */
     public function show(Skiarea $skiarea)
     {
-        //
+        return response()->json($skiarea);
     }
 
     /**
