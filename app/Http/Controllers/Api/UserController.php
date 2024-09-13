@@ -19,6 +19,6 @@ class UserController extends Controller
 
     public function getRescuer(Request $request, $id)
     {
-        return response()->json(User::find($id));
+        return response()->json(User::where('_id', $id)->first());
     }
 }
