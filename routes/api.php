@@ -28,6 +28,7 @@ Route::middleware('auth:sanctum')->group(
         Route::prefix('skiarea')->group(
             function () {
                 Route::get('/', [SkiareaController::class, 'index']);
+                Route::get('/{skiarea}', [SkiareaController::class, 'show']);
             }
         );
         Route::prefix('sensor')->group(
