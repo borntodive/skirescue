@@ -38,6 +38,7 @@ Route::middleware('auth:sanctum')->group(
         Route::prefix('user')->group(
             function () {
                 Route::get('/rescuers', [UserController::class, 'getRescuers']);
+                Route::get('/rescuers/{id}', [UserController::class, 'getRescuer']);
             }
         );
         Route::prefix('sample')->group(
